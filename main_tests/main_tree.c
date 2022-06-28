@@ -15,13 +15,15 @@ int main()
     p_node *nodes;
 
     t_tree t = createEmptyTree();
-    //displayTree(t);
-    p_node  pnew = createNode(4);
-    t.root = pnew;
-    //displayTree(t);
-    t.root->right=createNode(5);
-    t.root->right->left=createNode(42);
-    //t.root->left=createNode(-2);
+    t.root = createNode(18);
+    p_node tmp;
+    tmp = t.root;
+
+    for (int cpt=1; cpt <=5;cpt++)
+    {
+        tmp->right = createNode(cpt*4);
+        tmp = tmp->right;
+    }
     displayTree(t);
 
 

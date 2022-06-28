@@ -12,7 +12,7 @@ int main()
     t_tree t;
     t = createEmptyTree();
 
-    for (int cpt = 0; cpt < 31; cpt++)
+    for (int cpt = 0; cpt < 9; cpt++)
     {
         addElt(&t, cpt+1);
     }
