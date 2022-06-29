@@ -3,8 +3,8 @@
 //
 
 #include <stdlib.h>
-#include "../../bintree/tree.h"
-#include "../../exos_bintree/fill_bin_tree_random.h"
+#include "../../bintree/bintree.h"
+#include "../../exercises/bintrees/fill_bin_tree_random.h"
 #include "../../bintree/disp/displaybintree.h"
 
 int main()

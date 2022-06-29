@@ -4,7 +4,7 @@
 
 #ifndef UNTITLED_FILL_BIN_TREE_RANDOM_H
 #define UNTITLED_FILL_BIN_TREE_RANDOM_H
-#include "../../bintree/tree.h"
+#include "../../bintree/bintree.h"
 
 void addRandomElt(p_tree, int);
 

@@ -4,7 +4,7 @@
 
 #ifndef UNTITLED_FILL_BIN_TREE_LEFT_TO_RIGHT_H
 #define UNTITLED_FILL_BIN_TREE_LEFT_TO_RIGHT_H
-#include "../../bintree/tree.h"
+#include "../../bintree/bintree.h"
 
 void addElt(p_tree, int);
 

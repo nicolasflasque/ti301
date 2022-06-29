@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "cards.h"
 #include "../../circlist/circlist.h"
-#include "../../timer/timer.h"
+#include "../../utils/timer/timer.h"
 
 #define DECK_SIZE 1000
 #define NB_DIST 1000

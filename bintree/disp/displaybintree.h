@@ -5,7 +5,7 @@
 #ifndef UNTITLED_DISPLAYBINTREE_H
 #define UNTITLED_DISPLAYBINTREE_H
 
-#include "../tree.h"
+#include "../bintree.h"
 #define LINE_SIZE 1024
 #define MAX_NB_LINES 100
 

@@ -9,7 +9,7 @@
 #define NB_LINES 4
 
 /***
- * @authors user1571409 Nicolas Flasque
+ * @authors user1571409 & Nicolas Flasque
  * @copyright https://stackoverflow.com/questions/801740/c-how-to-draw-a-binary-tree-to-the-console
  *
  */
