@@ -3,9 +3,9 @@
 //
 
 
-#include "../bintree/tree.h"
-#include "../exos_bintree/fill_bin_tree_left_to_right.h"
-#include "../bintree/disp/displaybintree.h"
+#include "../../bintree/tree.h"
+#include "../../exos_bintree/fill_bin_tree_left_to_right.h"
+#include "../../bintree/disp/displaybintree.h"
 
 int main()
 {

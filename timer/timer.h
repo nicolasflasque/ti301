@@ -7,9 +7,14 @@
 
 #include <time.h>
 
-clock_t _start;
-clock_t _end;
-double _msecs;
+typedef struct s_timer
+{
+    clock_t _start;
+    clock_t _end;
+    double _msecs;
+} t_timer;
+
+static t_timer _timer;
 
 void startTimer();
 
