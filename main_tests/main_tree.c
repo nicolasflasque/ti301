@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 #include "../bintree/tree.h"
-#include "../utils/intpow.h"
+#include "../utils/intpow/intpow.h"
 #include "../bintree/disp/displaybintree.h"
 
 

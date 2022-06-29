@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #include "tree.h"
-#include "../utils/intpow.h"
+#include "../utils/intpow/intpow.h"
 
 #define max(a,b) ((a)>(b)?(a):(b))
 
