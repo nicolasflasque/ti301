@@ -7,5 +7,6 @@
 #include "../../bintree/bintree.h"
 
 void addElt(p_tree, int);
+void fillCompleteTree(t_tree *, int);
 
 #endif //UNTITLED_FILL_BIN_TREE_LEFT_TO_RIGHT_H

@@ -17,7 +17,7 @@
 int _print_t(p_node root, int is_left, int offset, int depth, char s[MAX_NB_LINES][LINE_SIZE])
 {
     char b[20];
-    char init[7]= "[root@]";
+    char init[]= "[root@]";
     int width = 5;
     int left, right;
 

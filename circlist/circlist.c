@@ -8,6 +8,76 @@
 
 #include "circlist.h"
 
+void displayCircListStatus(int status)
+{
+    switch(status)
+    {
+        case 1 :
+            fprintf(stderr,"list is ok\n");
+            break;
+        case 0 :
+            fprintf(stderr,"list is not ok : head is NULL, tail is NOT NULL\n");
+            break;
+        case -1 :
+            fprintf(stderr,"list is not ok : head is NOT NULL, tail is NULL\n");
+            break;
+        case -2 :
+            fprintf(stderr,"list is not circular : the next of the tail is not the head\n");
+            break;
+        case -3 :
+            fprintf(stderr, "list is not ok : number of cells is not correct\n");
+    }
+    return;
+}
+
+int checkIsCircList(t_circ_list cl, int awaited_size)
+{
+    // status 1 : ok
+    int size=0;
+    // -1 si l'un des deux est NULL et pas l'autre
+    if ((cl.head==NULL) && (cl.tail!=NULL))
+    {
+        return 0;
+    }
+    if ((cl.head!=NULL) && (cl.tail==NULL))
+    {
+        return -1;
+    }
+    // -2 si la dernière ne repointe pas sur la première
+    if (cl.head != NULL)
+    {
+        if (cl.tail->next != cl.head)
+        {
+            return -2;
+        }
+        else
+        {
+            while (cl.head != cl.tail)
+            {
+                size+=1;
+                cl.head = cl.head->next;
+            }
+            size+=1;
+
+            if (size != awaited_size)
+            {
+                return -3;
+            }
+        }
+    }
+    else
+    {
+        if (awaited_size != 0)
+        {
+            return -3;
+        }
+    }
+
+
+
+    return 1;
+}
+
 t_circ_list createEmptyCircList()
 {
     t_circ_list cl;
@@ -25,7 +95,8 @@ void insertValueHead(t_circ_list *p_cl, int value)
     {
         p_cl->head = p_cl->tail = nouv;
         p_cl->tail->next = p_cl->head;
-    } else
+    }
+    else
     {
         nouv->next = p_cl->head;
         p_cl->head = nouv;
@@ -225,3 +296,46 @@ void removeCell(t_circ_list *p_cl, p_cell out)
 
 }
 
+void removeCellCircList(t_circ_list *p_list, int val)
+{
+    p_cell temp, prev ;
+
+    if (p_list->head != NULL)
+    {
+        if ((p_list->head == p_list->tail) && (p_list->head->value == val))
+        {
+            p_list->head = p_list->tail = NULL;
+        }
+        else
+        {
+            temp = prev = p_list->head;
+
+            while ((temp->next != p_list->head) && (temp->value != val))
+            {
+                prev = temp;
+                temp = temp->next;
+            }
+
+            if (temp->value == val) // on a trouve la cellule !
+            {
+                if (temp == p_list->head)
+                {
+                    p_list->head = p_list->head->next;
+                    p_list->tail->next = p_list->head;
+                }
+                else
+                {
+                    prev->next = temp->next;
+                }
+            }
+
+            if (p_list->tail->value == val)
+            {
+                prev->next = temp->next;
+                p_list->tail = prev;
+            }
+        }
+    }
+
+    return;
+}

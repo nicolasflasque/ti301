@@ -5,12 +5,6 @@
 #ifndef UNTITLED_CARDS_H
 #define UNTITLED_CARDS_H
 
-struct s_card
-{
-    int rank;
-    int color;
-};
-
-typedef struct s_card t_card;
+void displayCard(int);
 
 #endif //UNTITLED_CARDS_H

@@ -13,8 +13,18 @@ struct s_node
 
 typedef struct s_node t_node, *p_node;
 
+/***
+ * @brief
+ * @param
+ * @return
+ */
 p_node createNode(int);
 
+/***
+ * @brief
+ * @param
+ * @return
+ */
 void displayNode(t_node);
 
 #endif //UNTITLED_NODE_H

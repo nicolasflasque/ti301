@@ -3,6 +3,7 @@
 //
 #include <stdlib.h>
 #include "fill_bin_tree_left_to_right.h"
+#include "../../utils/intpow/intpow.h"
 
 void addElt(p_tree ptr_t, int val)
 {
@@ -46,6 +47,17 @@ void addElt(p_tree ptr_t, int val)
             pos++;
         }
 
+    }
+
+    return;
+}
+
+void fillCompleteTree(t_tree *p_tree, int level)
+{
+    int nbNodes = intpow(2,level)-1;
+    for (int nodenum = 1; nodenum <= nbNodes; nodenum++)
+    {
+        addElt(p_tree, nodenum);
     }
 
     return;

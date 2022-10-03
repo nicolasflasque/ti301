@@ -7,15 +7,15 @@
 
 #include "../base/node/node.h"
 
-struct s_tree
+typedef struct s_tree
 {
     p_node root;
-};
+} t_tree, *p_tree;
 
 
-typedef  struct s_tree t_tree, *p_tree;
-
+int treeNodeCount(t_tree);
 t_tree createEmptyTree();
 int getDepth(t_tree);
-
+t_tree createTree(p_node);
+p_node seekValue(p_node, int);
 #endif //UNTITLED_BINTREE_H

@@ -19,4 +19,10 @@ void insertValueTail(t_circ_list *, int);
 
 void removeCell(t_circ_list *, p_cell);
 
+void removeCellCircList(t_circ_list *, int);
+
+int checkIsCircList(t_circ_list,int);
+
+void displayCircListStatus(int);
+
 #endif //UNTITLED_CIRCLIST_H

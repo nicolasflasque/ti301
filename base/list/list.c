@@ -7,6 +7,126 @@
 
 #include "list.h"
 
+void testDisplaySimplelist(t_std_list aList)
+{
+    printf("[");
+    p_cell temp = aList.head;
+    while (temp != NULL)
+    {
+        printf("%d | ",temp->value);
+        temp=temp->next;
+    }
+    printf("NULL]\n");
+}
+
+int isValInList(t_std_list aList, int val)
+{
+    int res = 0;
+    p_cell temp = aList.head;
+    while ((temp != NULL) && (temp->value != val))
+    {
+        temp = temp->next;
+    }
+
+    if (temp != NULL)
+    {
+        res = 1;
+    }
+
+    return res;
+}
+
+void removeValFromList(t_std_list *p_list, int val)
+{
+    p_cell temp;
+    p_cell prev;
+
+    int found=0;
+
+    if (p_list->head != NULL)
+    {
+        temp = p_list->head;
+        prev = temp;
+
+        if ((temp->value)==val)
+        {
+            p_list->head = temp->next;
+            // optionnel
+            free(temp);
+        }
+        else
+        {
+            while ((temp != NULL ) && (temp->value != val))
+            {
+                prev=temp;
+                temp = temp->next;
+            }
+
+            if (temp != NULL)
+            {
+                prev->next = temp->next;
+                //optionnel
+                free(temp);
+            }
+        }
+    }
+
+    return;
+}
+
+void removeAllValFromList(t_std_list *p_list, int val)
+{
+    while (isValInList(*p_list, val) == 1)
+    {
+        removeValFromList(p_list, val);
+    }
+    return;
+}
+
+
+void insertOrderedHtList(t_ht_list *p_list, int val)
+{
+    p_cell temp;
+    p_cell prev;
+    p_cell nouv;
+
+    nouv = createCell(val);
+
+    if (isEmptyHtList(*p_list))
+    {
+        p_list->head = p_list->tail = nouv;
+    }
+    else
+    {
+        temp = p_list->head;
+        prev = temp;
+
+        while ((temp != NULL) && (temp->value < nouv->value))
+        {
+            prev = temp;
+            temp = temp->next;
+        }
+
+         if (temp == prev)
+        {
+            nouv->next = p_list->head;
+            p_list->head = nouv;
+        }
+        else
+        {
+            nouv->next = temp;
+            prev->next = nouv;
+
+            if (temp==NULL)
+            {
+                p_list->tail = nouv;
+            }
+        }
+    }
+
+    return;
+}
+
 void addHeadStd(t_std_list *p_list, int val)
 {
     p_cell nouv;
@@ -173,4 +293,22 @@ int isEmptyHtList(t_ht_list htl)
     return res;
 }
 
+int isValInHtList(t_ht_list list, int val)
+{
+    p_cell temp = list.head;
+    int found = 0;
 
+    while ((temp != NULL) && (val != temp->value))
+    {
+        temp = temp->next;
+    }
+
+    if (temp != NULL)
+    {
+        found = 1;
+    }
+
+    return found;
+}
+
+void removeValFromHtList(t_ht_list *p_list, int val);

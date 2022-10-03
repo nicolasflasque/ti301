@@ -14,6 +14,11 @@ struct s_n_node
 
 typedef struct s_n_node t_n_node, *p_n_node;
 
+/***
+ * @brief
+ * @param
+ * @return
+ */
 p_n_node createN_Node(int);
 
 #endif //UNTITLED_N_NODE_H

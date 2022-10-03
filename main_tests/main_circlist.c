@@ -43,7 +43,38 @@ int main()
 
     printf("try to remove cells....\n");
 
-    p_cell out;
+    printf("removing  %d\n", values[3]);
+    removeCellCircList(&cl, values[3]);
+    displayCircList(cl);
+
+    printf("removing  %d\n", 50);
+    removeCellCircList(&cl, 50);
+    displayCircList(cl);
+
+    printf("removing  %d\n", values[0]);
+    removeCellCircList(&cl, values[0]);
+    displayCircList(cl);
+
+    printf("removing  %d\n", values[6]);
+    removeCellCircList(&cl, values[6]);
+    displayCircList(cl);
+
+    printf("removing  %d\n", values[5]);
+    removeCellCircList(&cl, values[5]);
+    displayCircList(cl);
+
+    printf("removing  %d\n", values[2]);
+    removeCellCircList(&cl, values[2]);
+    displayCircList(cl);
+
+    printf("removing  %d\n", values[4]);
+    removeCellCircList(&cl, values[4]);
+    displayCircList(cl);
+
+    printf("removing  %d\n", values[1]);
+    removeCellCircList(&cl, values[1]);
+    displayCircList(cl);
+/*    p_cell out;
     for (int cptr = 0; cptr < 8; cptr++)
     {
         out = cl.head;
@@ -59,6 +90,6 @@ int main()
         removeCell(&cl, out);
         displayCircList(cl);
     }
-
+*/
     return 0;
 }
