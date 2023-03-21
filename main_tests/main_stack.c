@@ -14,7 +14,9 @@ int main()
     push(&st, 3);
     displayStack(st);
     push(&st, -6);
-    push(&st, 5);push(&st, 17);push(&st, 0);
+    push(&st, 5);
+    push(&st, 17);
+    push(&st, 0);
     displayStack(st);
 
 

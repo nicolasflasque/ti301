@@ -12,16 +12,16 @@ int main()
 {
     srand(42543);
     t_tree t;
-    t= createEmptyTree();
+    t = createEmptyTree();
 
-    for (int v=1;v <= 7; v++)
+    for (int v = 1; v <= 7; v++)
     {
-        addRandomElt(&t,rand()%29-14);
+        addRandomElt(&t, rand() % 29 - 14);
     }
     displayTree(t);
 
     printf("height : %d\n", getDepth(t));
-    printf("node count : %d\n",treeNodeCount(t));
+    printf("node count : %d\n", treeNodeCount(t));
 
     return 0;
 }

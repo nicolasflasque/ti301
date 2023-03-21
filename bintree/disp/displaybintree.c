@@ -17,7 +17,7 @@
 int _print_d(p_node root, int is_left, int offset, int depth, char s[MAX_NB_LINES][LINE_SIZE])
 {
     char b[20];
-    char init[]= "[root@]";
+    char init[] = "[root@]";
     int width = 5;
     int left, right;
 
@@ -26,8 +26,7 @@ int _print_d(p_node root, int is_left, int offset, int depth, char s[MAX_NB_LINE
         sprintf(b, "NULL ");
         left = right = 0;
         //return 0;
-    }
-    else
+    } else
     {
         sprintf(b, "[%03d])", root->depth);
         left = _print_d(root->left, 1, offset, depth + 1, s);
@@ -36,46 +35,51 @@ int _print_d(p_node root, int is_left, int offset, int depth, char s[MAX_NB_LINE
 
     if (!depth)
     {
-        for (int i = 0; i < width+2; i++)
+        for (int i = 0; i < width + 2; i++)
             s[0][offset + left + i - 3] = init[i];
-        s[1][offset + left + width-3] = '|';
-        s[2][offset + left + width-3] = 'v';
+        s[1][offset + left + width - 3] = '|';
+        s[2][offset + left + width - 3] = 'v';
     }
 
     for (int i = 0; i < width; i++)
-        s[INIT_LINES+NB_LINES * depth][offset + left + i] = b[i];
-    if (depth && is_left) {
+        s[INIT_LINES + NB_LINES * depth][offset + left + i] = b[i];
+    if (depth && is_left)
+    {
 
         for (int i = 0; i < width + right; i++)
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2 + i] = '-';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 + i] = '-';
 
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2-2] = '[';
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2-1] = 'L';
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2] = '@';
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2+1] = ']';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 - 2] = '[';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 - 1] = 'L';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2] = '@';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 + 1] = ']';
 
 
-        s[INIT_LINES+NB_LINES * depth - 2][offset + left + width/2] = '|';
+        s[INIT_LINES + NB_LINES * depth - 2][offset + left + width / 2] = '|';
 
-        s[INIT_LINES+NB_LINES * depth - 1][offset + left + width/2] = 'v';
+        s[INIT_LINES + NB_LINES * depth - 1][offset + left + width / 2] = 'v';
 
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width + right + width/2] = '+';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width + right + width / 2] = '+';
 
-    } else if (depth && !is_left) {
+    } else
+    {
+        if (depth && !is_left)
+        {
 
             for (int i = 0; i < left + width; i++)
-                s[INIT_LINES+NB_LINES * depth - 3][offset - width/2 + i] = '-';
+                s[INIT_LINES + NB_LINES * depth - 3][offset - width / 2 + i] = '-';
 
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2-2] = '[';
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2-1] = 'R';
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2] = '@';
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2 +1] = ']';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 - 2] = '[';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 - 1] = 'R';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2] = '@';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 + 1] = ']';
 
-            s[INIT_LINES+NB_LINES * depth - 2][offset + left + width/2] = '|';
-            s[INIT_LINES+NB_LINES * depth - 1][offset + left + width/2] = 'v';
+            s[INIT_LINES + NB_LINES * depth - 2][offset + left + width / 2] = '|';
+            s[INIT_LINES + NB_LINES * depth - 1][offset + left + width / 2] = 'v';
 
-            s[INIT_LINES+NB_LINES * depth - 3][offset - width/2 - 1] = '+';
+            s[INIT_LINES + NB_LINES * depth - 3][offset - width / 2 - 1] = '+';
         }
+    }
 
 
     return left + width + right;
@@ -84,7 +88,7 @@ int _print_d(p_node root, int is_left, int offset, int depth, char s[MAX_NB_LINE
 int _print_t(p_node root, int is_left, int offset, int depth, char s[MAX_NB_LINES][LINE_SIZE])
 {
     char b[20];
-    char init[]= "[root@]";
+    char init[] = "[root@]";
     int width = 5;
     int left, right;
 
@@ -92,9 +96,8 @@ int _print_t(p_node root, int is_left, int offset, int depth, char s[MAX_NB_LINE
     {
         sprintf(b, "NULL ");
         left = right = 0;
-       //return 0;
-    }
-    else
+        //return 0;
+    } else
     {
         sprintf(b, "[%03d])", root->value);
         left = _print_t(root->left, 1, offset, depth + 1, s);
@@ -103,46 +106,51 @@ int _print_t(p_node root, int is_left, int offset, int depth, char s[MAX_NB_LINE
 
     if (!depth)
     {
-        for (int i = 0; i < width+2; i++)
+        for (int i = 0; i < width + 2; i++)
             s[0][offset + left + i - 3] = init[i];
-        s[1][offset + left + width-3] = '|';
-        s[2][offset + left + width-3] = 'v';
+        s[1][offset + left + width - 3] = '|';
+        s[2][offset + left + width - 3] = 'v';
     }
 
     for (int i = 0; i < width; i++)
-        s[INIT_LINES+NB_LINES * depth][offset + left + i] = b[i];
-    if (depth && is_left) {
+        s[INIT_LINES + NB_LINES * depth][offset + left + i] = b[i];
+    if (depth && is_left)
+    {
 
         for (int i = 0; i < width + right; i++)
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2 + i] = '-';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 + i] = '-';
 
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2-2] = '[';
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2-1] = 'L';
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2] = '@';
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2+1] = ']';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 - 2] = '[';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 - 1] = 'L';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2] = '@';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 + 1] = ']';
 
 
-        s[INIT_LINES+NB_LINES * depth - 2][offset + left + width/2] = '|';
+        s[INIT_LINES + NB_LINES * depth - 2][offset + left + width / 2] = '|';
 
-        s[INIT_LINES+NB_LINES * depth - 1][offset + left + width/2] = 'v';
+        s[INIT_LINES + NB_LINES * depth - 1][offset + left + width / 2] = 'v';
 
-        s[INIT_LINES+NB_LINES * depth - 3][offset + left + width + right + width/2] = '+';
+        s[INIT_LINES + NB_LINES * depth - 3][offset + left + width + right + width / 2] = '+';
 
-    } else if (depth && !is_left) {
+    } else
+    {
+        if (depth && !is_left)
+        {
 
             for (int i = 0; i < left + width; i++)
-                s[INIT_LINES+NB_LINES * depth - 3][offset - width/2 + i] = '-';
+                s[INIT_LINES + NB_LINES * depth - 3][offset - width / 2 + i] = '-';
 
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2-2] = '[';
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2-1] = 'R';
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2] = '@';
-            s[INIT_LINES+NB_LINES * depth - 3][offset + left + width/2 +1] = ']';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 - 2] = '[';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 - 1] = 'R';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2] = '@';
+            s[INIT_LINES + NB_LINES * depth - 3][offset + left + width / 2 + 1] = ']';
 
-            s[INIT_LINES+NB_LINES * depth - 2][offset + left + width/2] = '|';
-            s[INIT_LINES+NB_LINES * depth - 1][offset + left + width/2] = 'v';
+            s[INIT_LINES + NB_LINES * depth - 2][offset + left + width / 2] = '|';
+            s[INIT_LINES + NB_LINES * depth - 1][offset + left + width / 2] = 'v';
 
-            s[INIT_LINES+NB_LINES * depth - 3][offset - width/2 - 1] = '+';
+            s[INIT_LINES + NB_LINES * depth - 3][offset - width / 2 - 1] = '+';
         }
+    }
 
 
     return left + width + right;
@@ -163,17 +171,17 @@ void print_t(p_node root)
     for (int i = 0; i < MAX_NB_LINES; i++)
     {
         int lastchar = 1023;
-        while ((lastchar >0) && ((s[i][lastchar] == ' ') || (s[i][lastchar] == '\0')))
+        while ((lastchar > 0) && ((s[i][lastchar] == ' ') || (s[i][lastchar] == '\0')))
         {
             lastchar--;
         }
         s[i][++lastchar] = '\0';
-        if (lastchar >1)
+        if (lastchar > 1)
         {
             lastline++;
         }
     }
-    for (int i = 0; i <=lastline; i++)
+    for (int i = 0; i <= lastline; i++)
         printf("%s\n", s[i]);
 }
 
@@ -192,17 +200,17 @@ void print_d(p_node root)
     for (int i = 0; i < MAX_NB_LINES; i++)
     {
         int lastchar = 1023;
-        while ((lastchar >0) && ((s[i][lastchar] == ' ') || (s[i][lastchar] == '\0')))
+        while ((lastchar > 0) && ((s[i][lastchar] == ' ') || (s[i][lastchar] == '\0')))
         {
             lastchar--;
         }
         s[i][++lastchar] = '\0';
-        if (lastchar >1)
+        if (lastchar > 1)
         {
             lastline++;
         }
     }
-    for (int i = 0; i <=lastline; i++)
+    for (int i = 0; i <= lastline; i++)
         printf("%s\n", s[i]);
 }
 

@@ -9,7 +9,7 @@
 
 int main()
 {
-    srand((unsigned )time(NULL));
+    srand((unsigned) time(NULL));
     t_circ_list cl = createEmptyCircList();
     int values[7];
 

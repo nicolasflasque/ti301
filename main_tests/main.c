@@ -10,7 +10,7 @@
 int main()
 {
     srand((unsigned) time(NULL));
-    int tab[TAI] = {5,4, 6, 5, 5, 0, 7,5,1,5};
+    int tab[TAI] = {5, 4, 6, 5, 5, 0, 7, 5, 1, 5};
     t_std_list list;
     int check;
 
@@ -25,12 +25,12 @@ int main()
     testDisplaySimplelist(list);
     for (int cpt = 0; cpt < TAI; cpt++)
     {
-        check = isValInList(list,tab[cpt]);
-        printf("valeur %d dans la liste : %d\n",tab[cpt],check);
+        check = isValInList(list, tab[cpt]);
+        printf("valeur %d dans la liste : %d\n", tab[cpt], check);
     }
 
-    check = isValInList(list,5);
-    printf("valeur %d dans la liste : %d\n",5,check);
+    check = isValInList(list, 5);
+    printf("valeur %d dans la liste : %d\n", 5, check);
 
 /*    printf("removing 3\n");
     removeValFromList(&list, 3);

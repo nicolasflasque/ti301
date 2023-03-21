@@ -13,8 +13,8 @@ void testDisplaySimplelist(t_std_list aList)
     p_cell temp = aList.head;
     while (temp != NULL)
     {
-        printf("%d | ",temp->value);
-        temp=temp->next;
+        printf("%d | ", temp->value);
+        temp = temp->next;
     }
     printf("NULL]\n");
 }
@@ -41,24 +41,23 @@ void removeValFromList(t_std_list *p_list, int val)
     p_cell temp;
     p_cell prev;
 
-    int found=0;
+    int found = 0;
 
     if (p_list->head != NULL)
     {
         temp = p_list->head;
         prev = temp;
 
-        if ((temp->value)==val)
+        if ((temp->value) == val)
         {
             p_list->head = temp->next;
             // optionnel
             free(temp);
-        }
-        else
+        } else
         {
-            while ((temp != NULL ) && (temp->value != val))
+            while ((temp != NULL) && (temp->value != val))
             {
-                prev=temp;
+                prev = temp;
                 temp = temp->next;
             }
 
@@ -95,8 +94,7 @@ void insertOrderedHtList(t_ht_list *p_list, int val)
     if (isEmptyHtList(*p_list))
     {
         p_list->head = p_list->tail = nouv;
-    }
-    else
+    } else
     {
         temp = p_list->head;
         prev = temp;
@@ -107,17 +105,16 @@ void insertOrderedHtList(t_ht_list *p_list, int val)
             temp = temp->next;
         }
 
-         if (temp == prev)
+        if (temp == prev)
         {
             nouv->next = p_list->head;
             p_list->head = nouv;
-        }
-        else
+        } else
         {
             nouv->next = temp;
             prev->next = nouv;
 
-            if (temp==NULL)
+            if (temp == NULL)
             {
                 p_list->tail = nouv;
             }
@@ -195,15 +192,14 @@ void addTailHt(t_ht_list *p_list, int val)
 void removeTailht(t_ht_list *p_list)
 {
 
-    p_cell tmp,prev;
+    p_cell tmp, prev;
     if (p_list->head == p_list->tail)
     {
         p_list->head = p_list->tail = NULL;
-    }
-    else
+    } else
     {
         tmp = p_list->head;
-        while(tmp!=NULL)
+        while (tmp != NULL)
         {
             prev = tmp;
             tmp = tmp->next;

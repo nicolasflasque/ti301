@@ -8,22 +8,19 @@
 #include "../base/list/list.h"
 
 
-
 int checkOrderedCells(p_cell ptr_cell)
 {
     int result;
-    if ((ptr_cell != NULL) && (ptr_cell->next !=NULL))
+    if ((ptr_cell != NULL) && (ptr_cell->next != NULL))
     {
         if ((ptr_cell->value) > (ptr_cell->next->value))
         {
             result = 0;
-        }
-        else
+        } else
         {
             result = checkOrderedCells(ptr_cell->next);
         }
-    }
-    else
+    } else
     {
         return 1;
     }
@@ -40,7 +37,7 @@ int main()
     int check;
 
     addTailHt(&myhtlist, 6);
-    insertOrderedHtList(&myhtlist,1);
+    insertOrderedHtList(&myhtlist, 1);
     displayHtList(myhtlist);
     addTailHt(&myhtlist, 31);
 
@@ -56,14 +53,13 @@ int main()
     displayHtList(myhtlist);
 
     check = checkOrderedCells(myhtlist.head);
-    printf("liste ordonnée : %d\n",check);
+    printf("liste ordonnée : %d\n", check);
 
     addTailHt(&myhtlist, 5);
     displayHtList(myhtlist);
 
     check = checkOrderedCells(myhtlist.head);
-    printf("liste ordonnée : %d\n",check);
-
+    printf("liste ordonnée : %d\n", check);
 
 
     return 0;

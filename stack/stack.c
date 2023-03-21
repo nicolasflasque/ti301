@@ -89,9 +89,9 @@ int dequeue_v1(t_queue q)
     int res;
     int cpt;
     res = q.values[0];
-    for (cpt=0; cpt < q.nbElts-1; cpt++)
+    for (cpt = 0; cpt < q.nbElts - 1; cpt++)
     {
-        q.values[cpt] = q.values[cpt+1];
+        q.values[cpt] = q.values[cpt + 1];
     }
     return res;
 }
@@ -101,27 +101,27 @@ int dequeue_v2(t_queue q)
     int res;
     int cpt;
     res = q.values[0];
-    for (cpt=0; cpt < q.nbElts-1; cpt++)
+    for (cpt = 0; cpt < q.nbElts - 1; cpt++)
     {
-        q.values[cpt] = q.values[cpt+1];
+        q.values[cpt] = q.values[cpt + 1];
     }
     q.nbElts--;
     return res;
 }
 
-int dequeue_v3(t_queue* pq)
+int dequeue_v3(t_queue *pq)
 {
     int res;
     int cpt;
     res = pq->values[0];
-    for (cpt=0; cpt < pq->nbElts-1; cpt++)
+    for (cpt = 0; cpt < pq->nbElts - 1; cpt++)
     {
-        pq->values[cpt] = pq->values[cpt+1];
+        pq->values[cpt] = pq->values[cpt + 1];
     }
     return res;
 }
 
-int dequeue_v4(t_queue* pq)
+int dequeue_v4(t_queue *pq)
 {
     int res;
     int cpt;

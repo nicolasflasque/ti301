@@ -8,7 +8,7 @@
 struct s_char_node
 {
     char value;
-    struct s_char_node   *left, *right;
+    struct s_char_node *left, *right;
     int depth;
 };
 

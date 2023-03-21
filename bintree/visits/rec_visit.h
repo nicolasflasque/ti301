@@ -8,7 +8,9 @@
 #include "../bintree.h"
 
 void prefixVisit(t_tree);
+
 void infixVisit(t_tree);
+
 void postfixVisit(t_tree);
 
 

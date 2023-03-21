@@ -7,7 +7,7 @@
 
 #include "../base/list/list.h"
 
-typedef  t_std_list  t_stack_list;
+typedef t_std_list t_stack_list;
 
 void displayStack(t_stack_list);
 

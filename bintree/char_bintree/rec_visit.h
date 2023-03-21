@@ -7,9 +7,11 @@
 
 #include "char_bintree.h"
 
-void prefixVisit(t_char_tree );
-void infixVisit(t_char_tree );
-void postfixVisit(t_char_tree );
+void prefixVisit(t_char_tree);
+
+void infixVisit(t_char_tree);
+
+void postfixVisit(t_char_tree);
 
 
 #endif //UNTITLED_REC_VISIT_H

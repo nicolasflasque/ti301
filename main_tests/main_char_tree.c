@@ -16,11 +16,11 @@ int main()
 
     mytree.root->right = createCharNode('/');
     pcur = mytree.root->right;
-    pcur->left=createCharNode('7');
-    pcur->right=createCharNode('-');
+    pcur->left = createCharNode('7');
+    pcur->right = createCharNode('-');
     pcur = pcur->right;
-    pcur->left=createCharNode('3');
-    pcur->right=createCharNode('2');
+    pcur->left = createCharNode('3');
+    pcur->right = createCharNode('2');
 
     prefixVisit(mytree);
     printf("\n");
@@ -29,7 +29,7 @@ int main()
     infixVisit(mytree);
 
     float val = evalTree(mytree);
-    printf("value : %f\n",val);
+    printf("value : %f\n", val);
 
     return EXIT_SUCCESS;
 }

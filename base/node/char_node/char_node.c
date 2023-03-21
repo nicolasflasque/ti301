@@ -11,7 +11,7 @@ p_char_node createCharNode(char val)
 {
     p_char_node nouv;
 
-    nouv = (p_char_node )malloc(sizeof(t_char_node));
+    nouv = (p_char_node) malloc(sizeof(t_char_node));
     nouv->value = val;
     nouv->left = nouv->right = NULL;
 
@@ -20,12 +20,14 @@ p_char_node createCharNode(char val)
 
 void displayCharNode(t_char_node n)
 {
-    char fmt1[]="[ %c | left @ | right @-]-->\n";
-    char fmt2[]="            |\n";
-    char fmt3[]="            v\n";
+    char fmt1[] = "[ %c | left @ | right @-]-->\n";
+    char fmt2[] = "            |\n";
+    char fmt3[] = "            v\n";
 
     printf(fmt1, n.value);
-    printf(fmt2); printf(fmt2); printf(fmt3);
+    printf(fmt2);
+    printf(fmt2);
+    printf(fmt3);
 
     return;
 }

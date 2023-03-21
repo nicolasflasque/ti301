@@ -6,9 +6,9 @@
 
 #include "char_bintree.h"
 
-#define max(a,b) ((a)>(b)?(a):(b))
+#define max(a, b) ((a)>(b)?(a):(b))
 
-int charNodeCount(p_char_node );
+int charNodeCount(p_char_node);
 
 
 t_char_tree createEmptyCharTree()
@@ -25,13 +25,12 @@ int getCharNodeDepth(p_char_node p_n)
 {
     int depth;
 
-    if (p_n ==NULL)
+    if (p_n == NULL)
     {
         depth = 0;
-    }
-    else
+    } else
     {
-        depth = 1+max(getCharNodeDepth(p_n->left), getCharNodeDepth(p_n->right));
+        depth = 1 + max(getCharNodeDepth(p_n->left), getCharNodeDepth(p_n->right));
     }
 
     return depth;
@@ -71,12 +70,24 @@ int charNodeCount(p_char_node p_n)
 p_char_node seekValue(p_char_node pn, char val)
 {
     p_char_node pleft, pright;
-    if (pn==NULL) return NULL;
-    if (pn->value == val) return pn;
-    pleft = seekValue(pn->left,val);
-    if (pleft!=NULL) return pleft;
+    if (pn == NULL)
+    {
+        return NULL;
+    }
+    if (pn->value == val)
+    {
+        return pn;
+    }
+    pleft = seekValue(pn->left, val);
+    if (pleft != NULL)
+    {
+        return pleft;
+    }
     pright = seekValue(pn->right, val);
-    if (pright != NULL) return pright;
+    if (pright != NULL)
+    {
+        return pright;
+    }
     return NULL;
 }
 
@@ -87,25 +98,25 @@ int isLeaf(p_char_node pn)
 
 float evalNode(p_char_node pn)
 {
-    if (isLeaf(pn)==1)
+    if (isLeaf(pn) == 1)
     {
-        return (pn->value)-'0';
+        return (pn->value) - '0';
     }
-    
+
     switch (pn->value)
     {
         case '+':
-            return evalNode(pn->left)+evalNode(pn->right);
+            return evalNode(pn->left) + evalNode(pn->right);
             break;
         case '-':
-            return evalNode(pn->left)-evalNode(pn->right);
+            return evalNode(pn->left) - evalNode(pn->right);
             break;
         case 'x':
         case '*' :
-            return evalNode(pn->left)*evalNode(pn->right);
+            return evalNode(pn->left) * evalNode(pn->right);
             break;
         case '/':
-            return evalNode(pn->left)/evalNode(pn->right);
+            return evalNode(pn->left) / evalNode(pn->right);
             break;
         default:
             return 0;
@@ -128,14 +139,14 @@ p_char_node buildNodeFromArray(char *values, int size, int idx)
     }
 
     res = createCharNode(values[idx]);
-    res->left=buildNodeFromArray(values,size,2*idx+1);
-    res->right=buildNodeFromArray(values,size, 2*idx+2);
+    res->left = buildNodeFromArray(values, size, 2 * idx + 1);
+    res->right = buildNodeFromArray(values, size, 2 * idx + 2);
     return res;
 }
 
-t_char_tree createTreeFromArray(char *values,int size)
+t_char_tree createTreeFromArray(char *values, int size)
 {
     t_char_tree t;
-    t.root = buildNodeFromArray(values,size,0);
+    t.root = buildNodeFromArray(values, size, 0);
     return t;
 }

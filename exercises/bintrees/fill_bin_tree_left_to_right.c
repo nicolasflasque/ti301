@@ -12,8 +12,7 @@ void addElt(p_tree ptr_t, int val)
     if (ptr_t->root == NULL)
     {
         ptr_t->root = ptr_new;
-    }
-    else
+    } else
     {
         p_node t_p_nodes[100];
         int cpt = 0;
@@ -29,17 +28,15 @@ void addElt(p_tree ptr_t, int val)
             {
                 father->left = ptr_new;
                 fini = 1;
-            }
-            else
+            } else
             {
-                t_p_nodes[cpt++]= father->left;
+                t_p_nodes[cpt++] = father->left;
             }
-            if ((!fini) && (father->right==NULL))
+            if ((!fini) && (father->right == NULL))
             {
                 father->right = ptr_new;
                 fini = 1;
-            }
-            else
+            } else
             {
                 t_p_nodes[cpt++] = father->right;
             }
@@ -54,7 +51,7 @@ void addElt(p_tree ptr_t, int val)
 
 void fillCompleteTree(t_tree *p_tree, int level)
 {
-    int nbNodes = intpow(2,level)-1;
+    int nbNodes = intpow(2, level) - 1;
     for (int nodenum = 1; nodenum <= nbNodes; nodenum++)
     {
         addElt(p_tree, nodenum);

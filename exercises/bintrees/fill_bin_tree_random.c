@@ -18,13 +18,12 @@ void addRandomElt(p_tree p_tr, int val)
 
     if (p_tr->root == NULL)
     {
-        p_tr->root =  nouv;
-    }
-    else
+        p_tr->root = nouv;
+    } else
     {
         while (!over)
         {
-            bool seekLeft = (bool)(rand()%2);
+            bool seekLeft = (bool) (rand() % 2);
 
             if (seekLeft)
             {
@@ -32,20 +31,17 @@ void addRandomElt(p_tree p_tr, int val)
                 {
                     father->left = nouv;
                     over = true;
-                }
-                else
+                } else
                 {
                     father = father->left;
                 }
-            }
-            else
+            } else
             {
                 if (father->right == NULL)
                 {
                     father->right = nouv;
                     over = true;
-                }
-                else
+                } else
                 {
                     father = father->right;
                 }

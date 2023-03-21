@@ -7,11 +7,18 @@
 #include "bintree.h"
 #include "../utils/intpow/intpow.h"
 
-#define max(a,b) ((a)>(b)?(a):(b))
+// prototypes des fonctions locales
+#define max(a, b) ((a)>(b)?(a):(b))
 
+// definition des fonctions locales
 int nodeCount(p_node);
 
+// definition des fonctions exportées
 
+/**
+ * @brief create an empty tree
+ * @return t_tree
+ */
 t_tree createEmptyTree()
 {
     t_tree tree;
@@ -21,25 +28,33 @@ t_tree createEmptyTree()
     return tree;
 }
 
-
+/**
+ * @brief get the depth of a node
+ * @param p_n
+ * @return int
+ */
 int getNodeDepth(p_node p_n)
 {
     int depth;
 
-    if (p_n ==NULL)
+    if (p_n == NULL)
     {
         depth = 0;
-    }
-    else
+    } else
     {
         int leftheight = getNodeDepth(p_n->left);
         int rightheight = getNodeDepth(p_n->right);
-        depth = 1+max(leftheight,rightheight);
+        depth = 1 + max(leftheight, rightheight);
     }
 
     return depth;
 }
 
+/**
+ * @brief get the depth of a tree
+ * @param t
+ * @return int
+ */
 int getDepth(t_tree t)
 {
     return getNodeDepth(t.root);
@@ -49,7 +64,7 @@ t_tree createTree(p_node p_n)
 {
     t_tree t;
     t.root = p_n;
-    
+
     return t;
 }
 
@@ -64,10 +79,9 @@ int nodeCount(p_node p_n)
     if (p_n == NULL)
     {
         count = 0;
-    }
-    else
+    } else
     {
-        count = 1+nodeCount(p_n->left)+nodeCount(p_n->right);
+        count = 1 + nodeCount(p_n->left) + nodeCount(p_n->right);
     }
     return count;
 }
@@ -76,12 +90,24 @@ p_node seekValue(p_node pn, int val)
 {
 
     p_node pleft, pright;
-    if (pn==NULL) return NULL;
-    if (pn->value == val) return pn;
-    pleft = seekValue(pn->left,val);
-    if (pleft!=NULL) return pleft;
+    if (pn == NULL)
+    {
+        return NULL;
+    }
+    if (pn->value == val)
+    {
+        return pn;
+    }
+    pleft = seekValue(pn->left, val);
+    if (pleft != NULL)
+    {
+        return pleft;
+    }
     pright = seekValue(pn->right, val);
-    if (pright != NULL) return pright;
+    if (pright != NULL)
+    {
+        return pright;
+    }
     return NULL;
 }
 
@@ -93,8 +119,7 @@ void insertBST(t_tree *pt, int value)
     if (pt->root == NULL)
     {
         pt->root = pn;
-    }
-    else
+    } else
     {
         cur = pt->root;
         while (cur != NULL)
@@ -103,8 +128,7 @@ void insertBST(t_tree *pt, int value)
             if (pn->value > cur->value)
             {
                 cur = cur->right;
-            }
-            else
+            } else
             {
                 cur = cur->left;
             }
@@ -112,8 +136,7 @@ void insertBST(t_tree *pt, int value)
         if (pn->value > father->value)
         {
             father->right = pn;
-        }
-        else
+        } else
         {
             father->left = pn;
         }
@@ -125,7 +148,7 @@ t_tree createBSTfromArray(int *values, int size)
 {
     t_tree t;
 
-    for (int cpt=0; cpt < size; cpt++)
+    for (int cpt = 0; cpt < size; cpt++)
     {
         insertBST(&t, values[cpt]);
     }
@@ -142,27 +165,29 @@ p_node buildNodeFromArray(int *values, int size, int idx)
     }
 
     res = createNode(values[idx]);
-    res->left=buildNodeFromArray(values,size,2*idx+1);
-    res->right=buildNodeFromArray(values,size, 2*idx+2);
+    res->left = buildNodeFromArray(values, size, 2 * idx + 1);
+    res->right = buildNodeFromArray(values, size, 2 * idx + 2);
     return res;
 }
 
-t_tree createTreeFromArray(int *values,int size)
+t_tree createTreeFromArray(int *values, int size)
 {
     t_tree t;
-    t.root = buildNodeFromArray(values,size,0);
+    t.root = buildNodeFromArray(values, size, 0);
     return t;
 }
 
 
 int nodeHeight(p_node pn)
 {
-    if (pn==NULL)
+    if (pn == NULL)
+    {
         return -1;
+    }
 
     int leftheight = nodeHeight(pn->left);
     int rightheight = nodeHeight(pn->right);
-    return 1+max(leftheight,rightheight);
+    return 1 + max(leftheight, rightheight);
 }
 
 int treeHeight(t_tree t)
@@ -175,8 +200,8 @@ void updateNodeDepth(p_node pn, int d)
     if (pn != NULL)
     {
         pn->depth = d;
-        updateNodeDepth(pn->left,d+1);
-        updateNodeDepth(pn->right, d+1);
+        updateNodeDepth(pn->left, d + 1);
+        updateNodeDepth(pn->right, d + 1);
     }
     return;
 }
@@ -191,19 +216,19 @@ int isPerfectTree(t_tree t)
     int N = treeNodeCount(t);
     int H = treeHeight(t);
 
-    return (N==intpow(2,H+1)-1);
+    return (N == intpow(2, H + 1) - 1);
 }
 
 int isDegeneratedTree(t_tree t)
 {
     int N = treeNodeCount(t);
     int H = treeHeight(t);
-    return (N==H+1);
+    return (N == H + 1);
 }
 
 int isStrictNode(p_node pn)
 {
-    if (pn==NULL)
+    if (pn == NULL)
     {
         return 1;
     }
@@ -220,11 +245,11 @@ int isStrictNode(p_node pn)
 
 int isStrictTree(t_tree t)
 {
-    if (isPerfectTree(t)==1)
+    if (isPerfectTree(t) == 1)
     {
         return 1;
     }
-    if ((isDegeneratedTree(t)==1) && (treeNodeCount(t)>2))
+    if ((isDegeneratedTree(t) == 1) && (treeNodeCount(t) > 2))
     {
         return 0;
     }
@@ -234,12 +259,12 @@ int isStrictTree(t_tree t)
 
 int isBalancedNode(p_node pn)
 {
-    if (pn==NULL)
+    if (pn == NULL)
     {
         return 1;
     }
 
-    int diffHeight = nodeHeight(pn->left)-nodeHeight(pn->right);
+    int diffHeight = nodeHeight(pn->left) - nodeHeight(pn->right);
 
     if (abs(diffHeight) > 1)
     {
@@ -248,6 +273,7 @@ int isBalancedNode(p_node pn)
 
     return ((isBalancedNode(pn->left)) && (isBalancedNode(pn->right)));
 }
+
 //
 int isBalancedTree(t_tree t)
 {
@@ -269,11 +295,13 @@ p_node leftRot(p_node root)
     pivot->left = root;
     return pivot;
 }
+
 p_node doubleRightrot(p_node root)
 {
     root->left = leftRot(root->left);
     return rightRot(root);
 }
+
 p_node doubleLeftRot(p_node root)
 {
     root->right = rightRot(root->right);
@@ -313,10 +341,10 @@ int isBST(t_tree t)
 int segfaultFunc(p_node pn)
 {
 
-  int valLeft  = pn->left->value;
-  int valRight = pn->right->value;
+    int valLeft = pn->left->value;
+    int valRight = pn->right->value;
 
-  return pn->value + valLeft + valRight;
+    return pn->value + valLeft + valRight;
 };
 
 int someFunc(p_node pn1, p_node pn2)
@@ -325,7 +353,7 @@ int someFunc(p_node pn1, p_node pn2)
     {
         return 1;
     }
-    if ((pn1==NULL) != (pn2==NULL))
+    if ((pn1 == NULL) != (pn2 == NULL))
     {
         return 0;
     }
@@ -335,7 +363,7 @@ int someFunc(p_node pn1, p_node pn2)
         return 0;
     }
 
-    return someFunc(pn1->left, pn2->left) && someFunc(pn1->right,pn2->right);
+    return someFunc(pn1->left, pn2->left) && someFunc(pn1->right, pn2->right);
 
 }
 
@@ -348,13 +376,12 @@ p_node searchBST(t_tree t, int val)
 {
     p_node cur;
     cur = t.root;
-    while ((cur != NULL) && (cur->value !=val))
+    while ((cur != NULL) && (cur->value != val))
     {
         if (val > cur->value)
         {
             cur = cur->right;
-        }
-        else
+        } else
         {
             cur = cur->left;
         }

@@ -10,15 +10,15 @@ t_tree fibtree(int n)
     pone = createNode(1);
     pone->left = pone->right = pzero;
     pcur = pone;
-    if (n==0)
+    if (n == 0)
     {
         t.root = pzero;
-    }
-    else if (n==1)
+    } else
+    {
+        if (n == 1)
         {
             t.root = pone;
-        }
-        else
+        } else
         {
             for (int i = 2; i <= n; i++)
             {
@@ -30,6 +30,7 @@ t_tree fibtree(int n)
 
             t.root = father;
         }
+    }
     return t;
 
 }

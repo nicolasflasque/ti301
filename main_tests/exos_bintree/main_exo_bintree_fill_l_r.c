@@ -14,20 +14,19 @@ int main()
     t_tree t;
     t = createEmptyTree();
 
-    fillCompleteTree(&t,3);
+    fillCompleteTree(&t, 3);
 
     displayTree(t);
 
-    for(int cpt=0; cpt < 11; cpt++)
+    for (int cpt = 0; cpt < 11; cpt++)
     {
-        p_node seek=seekValue(t.root,cpt);
+        p_node seek = seekValue(t.root, cpt);
         if (seek == NULL)
         {
-            printf("value %d not found : seek=%p\n",cpt,seek);
-        }
-        else
+            printf("value %d not found : seek=%p\n", cpt, seek);
+        } else
         {
-            printf("value %d found at node %p\n",seek->value,seek);
+            printf("value %d found at node %p\n", seek->value, seek);
         }
     }
 

@@ -21,7 +21,7 @@ void displayCell(t_cell c)
     {
         printf("NULL");
     }
-    }
+}
 
 p_cell createCell(int val)
 {

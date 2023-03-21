@@ -9,10 +9,10 @@ p_n_node createN_Node(int val)
 {
     p_n_node nouv;
 
-    nouv = (p_n_node)malloc(sizeof (t_n_node));
-    nouv->value =val;
-    nouv->nb_sons=0;
-    nouv->sons = (p_n_node *)NULL;
+    nouv = (p_n_node) malloc(sizeof(t_n_node));
+    nouv->value = val;
+    nouv->nb_sons = 0;
+    nouv->sons = (p_n_node *) NULL;
 
     return nouv;
 }

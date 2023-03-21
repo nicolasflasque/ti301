@@ -10,19 +10,19 @@
 
 void displayCircListStatus(int status)
 {
-    switch(status)
+    switch (status)
     {
         case 1 :
-            fprintf(stderr,"list is ok\n");
+            fprintf(stderr, "list is ok\n");
             break;
         case 0 :
-            fprintf(stderr,"list is not ok : head is NULL, tail is NOT NULL\n");
+            fprintf(stderr, "list is not ok : head is NULL, tail is NOT NULL\n");
             break;
         case -1 :
-            fprintf(stderr,"list is not ok : head is NOT NULL, tail is NULL\n");
+            fprintf(stderr, "list is not ok : head is NOT NULL, tail is NULL\n");
             break;
         case -2 :
-            fprintf(stderr,"list is not circular : the next of the tail is not the head\n");
+            fprintf(stderr, "list is not circular : the next of the tail is not the head\n");
             break;
         case -3 :
             fprintf(stderr, "list is not ok : number of cells is not correct\n");
@@ -33,13 +33,13 @@ void displayCircListStatus(int status)
 int checkIsCircList(t_circ_list cl, int awaited_size)
 {
     // status 1 : ok
-    int size=0;
+    int size = 0;
     // -1 si l'un des deux est NULL et pas l'autre
-    if ((cl.head==NULL) && (cl.tail!=NULL))
+    if ((cl.head == NULL) && (cl.tail != NULL))
     {
         return 0;
     }
-    if ((cl.head!=NULL) && (cl.tail==NULL))
+    if ((cl.head != NULL) && (cl.tail == NULL))
     {
         return -1;
     }
@@ -49,30 +49,27 @@ int checkIsCircList(t_circ_list cl, int awaited_size)
         if (cl.tail->next != cl.head)
         {
             return -2;
-        }
-        else
+        } else
         {
             while (cl.head != cl.tail)
             {
-                size+=1;
+                size += 1;
                 cl.head = cl.head->next;
             }
-            size+=1;
+            size += 1;
 
             if (size != awaited_size)
             {
                 return -3;
             }
         }
-    }
-    else
+    } else
     {
         if (awaited_size != 0)
         {
             return -3;
         }
     }
-
 
 
     return 1;
@@ -95,8 +92,7 @@ void insertValueHead(t_circ_list *p_cl, int value)
     {
         p_cl->head = p_cl->tail = nouv;
         p_cl->tail->next = p_cl->head;
-    }
-    else
+    } else
     {
         nouv->next = p_cl->head;
         p_cl->head = nouv;
@@ -141,8 +137,7 @@ void displayCircList(t_circ_list cl)
     if (head == NULL)
     {
         savehead = NULL;
-    }
-    else
+    } else
     {
         savehead = cl.tail->next;
     }
@@ -162,8 +157,7 @@ void displayCircList(t_circ_list cl)
         displayStr[strlen(displayStr)] = 'L';
         displayStr[strlen(displayStr)] = '\n';
         tailPos = 17;
-    }
-    else
+    } else
     {
         while (head != NULL && !over)
         {
@@ -251,16 +245,14 @@ void removeCell(t_circ_list *p_cl, p_cell out)
     if (isEmptyHtList(*p_cl))
     {
         printf("cannot remove a cell from an empty list\n");
-    }
-    else
+    } else
     {
         // process apart a list with only on element
         // where head and tail are equal
         if (p_cl->head == p_cl->tail)
         {
             *p_cl = createEmptyCircList();
-        }
-        else // find prev (previous to 'out')
+        } else // find prev (previous to 'out')
         {
             p_cell prev = p_cl->head;
             while (prev->next != out)
@@ -274,15 +266,13 @@ void removeCell(t_circ_list *p_cl, p_cell out)
             {
                 prev->next = out->next;
                 p_cl->tail = prev;
-            }
-            else
+            } else
             {
                 if (p_cl->head == out)
                 {
                     p_cl->head = p_cl->head->next;
                     p_cl->tail->next = p_cl->head;
-                }
-                else
+                } else
                 {
                     prev->next = out->next;
                 }
@@ -298,15 +288,14 @@ void removeCell(t_circ_list *p_cl, p_cell out)
 
 void removeCellCircList(t_circ_list *p_list, int val)
 {
-    p_cell temp, prev ;
+    p_cell temp, prev;
 
     if (p_list->head != NULL)
     {
         if ((p_list->head == p_list->tail) && (p_list->head->value == val))
         {
             p_list->head = p_list->tail = NULL;
-        }
-        else
+        } else
         {
             temp = prev = p_list->head;
 
@@ -322,8 +311,7 @@ void removeCellCircList(t_circ_list *p_list, int val)
                 {
                     p_list->head = p_list->head->next;
                     p_list->tail->next = p_list->head;
-                }
-                else
+                } else
                 {
                     prev->next = temp->next;
                 }

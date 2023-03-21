@@ -69,7 +69,7 @@ int main()
     stopTimer();
     printf("distribution avec ht_list : ");
     displayTime();
-    int picks=0;
+    int picks = 0;
 
     startTimer();
     for (int runs = 0; runs < NB_DIST; runs++)
@@ -91,7 +91,7 @@ int main()
         }
     }
     stopTimer();
-    printf("distribution avec tableau (%d picks) : ",picks/NB_DIST);
+    printf("distribution avec tableau (%d picks) : ", picks / NB_DIST);
     displayTime();
     return 0;
 }

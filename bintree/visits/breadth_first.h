@@ -14,7 +14,6 @@ typedef struct s_pnode_queue
 } t_pnode_queue;
 
 
-
 void breadthFirstVisit(t_tree);
 
 #endif //UNTITLED_BREADTH_FIRST_H

@@ -72,13 +72,14 @@ void addTailHt(t_ht_list *, int);
 
 void insertOrderedHtList(t_ht_list *, int);
 
-int isValInList(t_std_list , int );
+int isValInList(t_std_list, int);
 
-void removeValFromList(t_std_list *, int );
+void removeValFromList(t_std_list *, int);
 
-void removeAllValFromList(t_std_list *, int );
+void removeAllValFromList(t_std_list *, int);
 
 int isValInHtList(t_ht_list, int);
+
 void removeValFromHtList(t_ht_list *, int);
 
 #endif //UNTITLED_LIST_H

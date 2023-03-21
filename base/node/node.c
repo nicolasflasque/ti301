@@ -10,7 +10,7 @@ p_node createNode(int val)
 {
     p_node nouv;
 
-    nouv = (p_node)malloc(sizeof(t_node));
+    nouv = (p_node) malloc(sizeof(t_node));
     nouv->value = val;
     nouv->left = nouv->right = NULL;
 
@@ -19,12 +19,14 @@ p_node createNode(int val)
 
 void displayNode(t_node n)
 {
-    char fmt1[]="[ %d | left @ | right @-]-->\n";
-    char fmt2[]="            |\n";
-    char fmt3[]="            v\n";
+    char fmt1[] = "[ %d | left @ | right @-]-->\n";
+    char fmt2[] = "            |\n";
+    char fmt3[] = "            v\n";
 
     printf(fmt1, n.value);
-    printf(fmt2); printf(fmt2); printf(fmt3);
+    printf(fmt2);
+    printf(fmt2);
+    printf(fmt3);
 
     return;
 }
