@@ -79,3 +79,63 @@ p_char_node seekValue(p_char_node pn, char val)
     if (pright != NULL) return pright;
     return NULL;
 }
+
+int isLeaf(p_char_node pn)
+{
+    return (pn->left == NULL) && (pn->right == NULL);
+}
+
+float evalNode(p_char_node pn)
+{
+    if (isLeaf(pn)==1)
+    {
+        return (pn->value)-'0';
+    }
+    
+    switch (pn->value)
+    {
+        case '+':
+            return evalNode(pn->left)+evalNode(pn->right);
+            break;
+        case '-':
+            return evalNode(pn->left)-evalNode(pn->right);
+            break;
+        case 'x':
+        case '*' :
+            return evalNode(pn->left)*evalNode(pn->right);
+            break;
+        case '/':
+            return evalNode(pn->left)/evalNode(pn->right);
+            break;
+        default:
+            return 0;
+            break;
+    }
+}
+
+float evalTree(t_char_tree t)
+{
+    return evalNode(t.root);
+}
+
+
+p_char_node buildNodeFromArray(char *values, int size, int idx)
+{
+    p_char_node res;
+    if ((idx >= size) || (values[idx] == -1))
+    {
+        return NULL;
+    }
+
+    res = createCharNode(values[idx]);
+    res->left=buildNodeFromArray(values,size,2*idx+1);
+    res->right=buildNodeFromArray(values,size, 2*idx+2);
+    return res;
+}
+
+t_char_tree createTreeFromArray(char *values,int size)
+{
+    t_char_tree t;
+    t.root = buildNodeFromArray(values,size,0);
+    return t;
+}

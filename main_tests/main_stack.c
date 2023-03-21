@@ -6,24 +6,17 @@
 
 int main()
 {
-    t_stack st = emptyStack();
+    t_stack_list st = emptyStack();
     int val;
     printf("stack with list\n");
     displayStack(st);
-    printf("trying to pop() a value\n");
-    val = pop(&st);
-    printf("pushing 3\n");
+
     push(&st, 3);
     displayStack(st);
-    printf("getting the top() value : ");
-    printf("top() : %d\n", top(st));
-    printf("pushing -6\n");
     push(&st, -6);
+    push(&st, 5);push(&st, 17);push(&st, 0);
     displayStack(st);
-    printf("pop() from stack\n");
-    val = pop(&st);
-    printf("pop() : %d\n", val);
-    displayStack(st);
+
 
     return 0;
 }

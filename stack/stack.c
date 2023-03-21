@@ -7,43 +7,43 @@
 #include "stack.h"
 
 
-void displayStack(t_stack s)
+void displayStack(t_stack_list s)
 {
-    printf("stack--> ");
+    printf("stack [");
     if (isStackEmpty(s))
     {
-        printf("[empty]");
+        printf("empty");
     }
-    while (s.list.head != NULL)
+    while (s.head != NULL)
     {
-        printf(" %d : ", s.list.head->value);
-        s.list.head = s.list.head->next;
+        printf(" : %d ", s.head->value);
+        s.head = s.head->next;
     }
-    printf("\n");
+    printf("]\n");
 
     return;
 }
 
-t_stack emptyStack()
+t_stack_list emptyStack()
 {
-    t_stack s;
-    s.list.head = NULL;
+    t_stack_list s;
+    s.head = NULL;
 
     return s;
 }
 
-int isStackEmpty(t_stack s)
+int isStackEmpty(t_stack_list s)
 {
-    return (s.list.head == NULL);
+    return (s.head == NULL);
 }
 
-void push(t_stack *p_s, int val)
+void push(t_stack_list *p_s, int val)
 {
-    addHeadStd(&(p_s->list), val);
+    addHeadStd(p_s, val);
     return;
 }
 
-int top(t_stack s)
+int top(t_stack_list s)
 {
     int res;
 
@@ -53,13 +53,13 @@ int top(t_stack s)
         res = -1;
     } else
     {
-        res = s.list.head->value;
+        res = s.head->value;
     }
 
     return res;
 }
 
-int pop(t_stack *p_s)
+int pop(t_stack_list *p_s)
 {
     int res;
 
@@ -69,11 +69,67 @@ int pop(t_stack *p_s)
         res = -1;
     } else
     {
-        res = p_s->list.head->value;
-        p_cell p_old = p_s->list.head;
-        p_s->list.head = p_s->list.head->next;
+        res = p_s->head->value;
+        p_cell p_old = p_s->head;
+        p_s->head = p_s->head->next;
         free(p_old);
     }
 
+    return res;
+}
+
+typedef struct s_queue
+{
+    int values[30];
+    int nbElts;
+} t_queue;
+
+int dequeue_v1(t_queue q)
+{
+    int res;
+    int cpt;
+    res = q.values[0];
+    for (cpt=0; cpt < q.nbElts-1; cpt++)
+    {
+        q.values[cpt] = q.values[cpt+1];
+    }
+    return res;
+}
+
+int dequeue_v2(t_queue q)
+{
+    int res;
+    int cpt;
+    res = q.values[0];
+    for (cpt=0; cpt < q.nbElts-1; cpt++)
+    {
+        q.values[cpt] = q.values[cpt+1];
+    }
+    q.nbElts--;
+    return res;
+}
+
+int dequeue_v3(t_queue* pq)
+{
+    int res;
+    int cpt;
+    res = pq->values[0];
+    for (cpt=0; cpt < pq->nbElts-1; cpt++)
+    {
+        pq->values[cpt] = pq->values[cpt+1];
+    }
+    return res;
+}
+
+int dequeue_v4(t_queue* pq)
+{
+    int res;
+    int cpt;
+    res = pq->values[0];
+    for (cpt = 0; cpt < pq->nbElts - 1; cpt++)
+    {
+        pq->values[cpt] = pq->values[cpt + 1];
+    }
+    (pq->nbElts)--;
     return res;
 }

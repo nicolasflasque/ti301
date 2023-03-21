@@ -192,6 +192,27 @@ void addTailHt(t_ht_list *p_list, int val)
     return;
 }
 
+void removeTailht(t_ht_list *p_list)
+{
+
+    p_cell tmp,prev;
+    if (p_list->head == p_list->tail)
+    {
+        p_list->head = p_list->tail = NULL;
+    }
+    else
+    {
+        tmp = p_list->head;
+        while(tmp!=NULL)
+        {
+            prev = tmp;
+            tmp = tmp->next;
+        }
+        prev->next = NULL;
+        p_list->tail = prev;
+    }
+}
+
 void displayHtList(t_ht_list list)
 {
     p_cell head = list.head;

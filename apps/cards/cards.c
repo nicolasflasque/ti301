@@ -33,7 +33,7 @@ void displayCard(int cardnumber)
         case 2 :
             printf("%s\n", hearts);
             break;
-        case 0 :
+        case 3 :
             printf("%s\n", spades);
             break;
     }

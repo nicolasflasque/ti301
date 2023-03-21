@@ -18,5 +18,8 @@ void stopTimer()
 void displayTime()
 {
     _timer._msecs = (1000.0 * (double) (_timer._end - _timer._start)) / CLOCKS_PER_SEC;
-    printf("%g ms secs %g secs\n", _timer._msecs, _timer._msecs / 1000.0);
+   int msecs = (int)(_timer._msecs)%1000;
+   int secs = (int)(_timer._msecs)/1000;
+
+   printf("%d s %d ms\n", secs, msecs);
 }

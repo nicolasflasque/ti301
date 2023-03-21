@@ -7,21 +7,18 @@
 
 #include "../base/list/list.h"
 
-typedef struct s_stack
-{
-    t_std_list list;
-} t_stack;
+typedef  t_std_list  t_stack_list;
 
-void displayStack(t_stack);
+void displayStack(t_stack_list);
 
-t_stack emptyStack();
+t_stack_list emptyStack();
 
-int isStackEmpty(t_stack);
+int isStackEmpty(t_stack_list);
 
-void push(t_stack *, int);
+void push(t_stack_list *, int);
 
-int top(t_stack);
+int top(t_stack_list);
 
-int pop(t_stack *);
+int pop(t_stack_list *);
 
 #endif //UNTITLED_STACK_H

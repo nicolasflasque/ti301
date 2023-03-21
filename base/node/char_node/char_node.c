@@ -18,7 +18,7 @@ p_char_node createCharNode(char val)
     return nouv;
 }
 
-void displayCharNode(t_node n)
+void displayCharNode(t_char_node n)
 {
     char fmt1[]="[ %c | left @ | right @-]-->\n";
     char fmt2[]="            |\n";

@@ -9,6 +9,7 @@ struct s_char_node
 {
     char value;
     struct s_char_node   *left, *right;
+    int depth;
 };
 
 typedef struct s_char_node t_char_node, *p_char_node;
@@ -18,7 +19,7 @@ typedef struct s_char_node t_char_node, *p_char_node;
  * @param
  * @return
  */
-p_node createCharNode(char);
+p_char_node createCharNode(char);
 
 /***
  * @brief
